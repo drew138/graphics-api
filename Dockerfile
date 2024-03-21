@@ -28,7 +28,7 @@
 #
 # ENTRYPOINT ["/app"]
 
-FROM golang:1.21.6-stretch
+FROM golang:1.22
 
 # RUN apt update && apt upgrade -y && \
 #     apt install -y git \
