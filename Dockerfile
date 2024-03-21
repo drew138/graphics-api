@@ -8,6 +8,6 @@ RUN go mod download
 
 EXPOSE 80
 
-RUN go build -o main .
+RUN go build -o main ./cmd/server/main.go
 
 CMD ["./main"]
