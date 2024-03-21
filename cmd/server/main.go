@@ -12,7 +12,7 @@ func main() {
 	router := router.NewRouter(eng)
 	router.MapRoutes()
 
-	if err := eng.Run(); err != nil {
+	if err := eng.Run("0.0.0.0:8080"); err != nil {
 		panic(err)
 	}
 
