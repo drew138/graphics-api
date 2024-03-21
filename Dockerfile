@@ -11,4 +11,6 @@ RUN  go build -o /app/server
 EXPOSE 80
 
 
-ENTRYPOINT ["/app/server"]
+RUN go build -o main .
+
+CMD ["./main"]
