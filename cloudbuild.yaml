@@ -1,12 +1,13 @@
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: [ 'build', '-t', '${_AR_HOSTNAME}/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}', '.' ]
-# images:
-# - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', '${_AR_HOSTNAME}/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}', '.' ]
+  args: [ 'build', '-t','$DOCKER_IMAGE', '.' ]
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', '$DOCKER_IMAGE', '--region', '${_DEPLOY_REGION}', '--platform', '${_PLATFORM}']
 images:
-- '${_AR_HOSTNAME}/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'
+- $DOCKER_IMAGE
 options:
   logging: CLOUD_LOGGING_ONLY
+  env:
+    - DOCKER_IMAGE='${_AR_HOSTNAME}/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'
