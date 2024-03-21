@@ -6,9 +6,9 @@ COPY . .
 
 RUN go mod download
 
-RUN  go build -o /app 
+RUN  go build -o /app/server
 
 EXPOSE 80
 
 
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/app/server"]
