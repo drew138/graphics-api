@@ -34,7 +34,7 @@ func (r *router) buildImageRoutes() {
 	handler := handler.NewImage(service)
 
 	r.eng.POST("/sharpen", handler.CreateSharpen())
-	r.eng.POST("/edgedetection", handler.CreateEdgeDetection())
-	r.eng.POST("/gaussianblur", handler.CreateGaussianBlur())
+	r.eng.POST("/edge-detection", handler.CreateEdgeDetection())
+	r.eng.POST("/gaussian-blur", handler.CreateGaussianBlur())
 	r.eng.POST("/boxblur", handler.CreateBoxBlur())
 }
