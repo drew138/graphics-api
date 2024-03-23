@@ -8,7 +8,7 @@ name: Go CI
 
 on:
   push:
-    branches: [ "main", "feature/**" ]
+    branches: [ "feature/**" ]
   pull_request:
     branches: [ "main" ]
 
